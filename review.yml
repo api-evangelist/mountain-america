@@ -1,0 +1,95 @@
+aid: mountain-america
+name: Mountain America Credit Union
+review:
+  question: Does Mountain America Credit Union expose a public first-party developer API, portal, or downloadable OpenAPI/Swagger spec?
+  answer: false
+  date: '2026-07-23'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    Mountain America Credit Union (MACU) publishes no public first-party
+    developer API and operates no developer portal. There is no
+    developer.macu.com host (DNS NXDOMAIN) and no reachable api.macu.com.
+    The macu.com site is a client-rendered single-page application: every
+    requested path — including /developers, /api, /developer, /open-banking,
+    /data-sharing — returns HTTP 200 with the same ~1151-1152 byte
+    application shell, confirming those paths are soft-404s rather than
+    documented API surfaces. No OpenAPI or Swagger definition is publicly
+    downloadable, so none was harvested.
+
+    This is the expected posture for a US credit union. US open finance is
+    voluntary and fragmented (no mandated open-banking contract as in the UK
+    or Australia). Consumer-permissioned data access is intermediated through
+    MACU's core banking provider and third-party data aggregators
+    (Plaid, MX, Finicity, Akoya) rather than a directly published API. No
+    documented Financial Data Exchange (FDX) participation and no stated CFPB
+    Section 1033 (Personal Financial Data Rights) data-access posture were
+    found for this institution at review time. No authentication model
+    (OAuth2/OIDC/API-key/mTLS) is documented because no public API exists.
+  posture:
+    firstPartyDeveloperPortal: false
+    developerPortalURL: ""
+    portalConfirmed: false
+    downloadableOpenAPI: false
+    fdxParticipant: false
+    cfpb1033PostureDocumented: false
+    aggregatorOnly: true
+    aggregators:
+      - Plaid
+      - MX
+      - Finicity
+      - Akoya
+    authModel: none-documented
+    specProvenance: none
+  institution:
+    charter: federally chartered credit union
+    regulator: NCUA
+    headquarters: Sandy, Utah, United States
+    founded: 1936
+    assetsUSD: approximately 21.9 billion
+    members: more than 1.4 million
+    branches: over 100
+    statesServed:
+      - Utah
+      - Idaho
+      - Montana
+      - Nevada
+      - Arizona
+  transports:
+    - protocol: REST
+      scheme: https
+      documented: false
+      note: No public REST API base URL is documented.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket surface is documented.
+  probes:
+    - url: https://developer.macu.com
+      result: DNS NXDOMAIN (no such host)
+    - url: https://api.macu.com
+      result: connection failed / no response
+    - url: https://www.macu.com
+      status: 200
+      note: Live homepage; client-rendered SPA shell.
+    - url: https://macu.com/developers
+      status: 200
+      note: Same ~1152-byte SPA shell as unknown paths; soft-404, not a real developer portal.
+    - url: https://macu.com/zzz-not-a-real-page-9876
+      status: 200
+      note: Nonexistent path also returns 200 with ~1151-byte identical shell, confirming soft-404 behavior.
+sources:
+  - url: https://www.macu.com/
+    type: Website
+    note: Live institution homepage (HTTP 200, JavaScript-rendered SPA).
+  - url: https://en.wikipedia.org/wiki/Mountain_America_Credit_Union
+    type: Reference
+    note: Charter type, NCUA regulator, founding year, asset size, membership, branches, and states served.
+actions:
+  apisYmlUpdated: true
+  openapiHarvested: false
+  reason: |
+    No public API surface exists to model. The record is identity-only
+    (built-stub) with an honest no-public-API, aggregator-only finding. Only
+    verified links (Website, LinkedIn) were recorded; no hosts, specs, or
+    endpoints were invented.
