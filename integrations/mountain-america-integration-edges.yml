@@ -1,5 +1,5 @@
 generated: '2026-10-12'
-method: none
+method: searched
 source:
 - https://zapier.com/apps/mountain-america/integrations
 - https://zapier.com/apps/mountain-america-credit-union/integrations
@@ -10,9 +10,34 @@ checked:
 - https://composio.dev/toolkits/mountain-america
 - https://monid.ai/tools/mountain-america
 - https://n8n.io/integrations/mountain-america/
+- https://registry.financialdataexchange.org/
 - https://zapier.com/apps/mountain-america-credit-union/integrations
 - https://zapier.com/apps/mountain-america/integrations
 summary: null
 marketplace_apps: []
-edges: []
+edges:
+- partner_name: FDX (Financial Data Exchange)
+  partner: fdx
+  type: contract
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://registry.financialdataexchange.org/
+  contract_reference:
+    register: FDX Registry
+    standard: FDX API
+    spec_file: null
+    register_api: https://registry.financialdataexchange.org/fdxregistryapi/organizations/search/listingTags
+    role: data-provider
+    member_type: MEMBER
+    registered_name: Mountain America FCU
+    register_id: 228
+    registered_website: https://www.macu.com/
+    country: United States
+    fdx_version: null
+    matched_by: domain:macu.com
+    detected_by: sweep-fdx.py
+    detected: '2026-10-14'
+  detected_by: sweep-fdx.py
+  first_seen: '2026-10-14'
 templates: []
