@@ -29,3 +29,36 @@
     detected: '2026-10-14'
   status: not-a-workflow
   arazzo: null
+- slug: mountain-america-ncua-federally-insured-credit-unions
+  label: NCUA federally insured credit unions
+  partner_name: NCUA federally insured credit unions
+  category: US NCUA federally insured credit union charter
+  type: register
+  channel: regulator-register
+  evidence: https://www.ncua.gov/files/publications/analysis/federally-insured-credit-union-list-june-2025.zip
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: NCUA federally insured credit unions
+    spec_file: null
+    standard: null
+    role: insured-credit-union
+    registrations:
+    - registered_name: MOUNTAIN AMERICA
+      register_status: active
+      register_country: US
+      register_id: '24692'
+      matched_domain: macu.com
+      matched_by: domain
+      licences:
+      - NCUA federally insured credit union (charter 24692)
+      evidence_url: https://mapping.ncua.gov/ResearchCreditUnion.aspx
+      state: UT
+      trade_names:
+      - Mountain America Credit Union
+    signal_note: 'participation only: a federal deposit-insurance charter on a regulator register; no API conformance
+      is published by this register'
+    detected_by: sweep-us-bank-credit-union-registers.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null

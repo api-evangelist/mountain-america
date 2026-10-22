@@ -13,6 +13,10 @@ checked:
 - https://registry.financialdataexchange.org/
 - https://zapier.com/apps/mountain-america-credit-union/integrations
 - https://zapier.com/apps/mountain-america/integrations
+- https://api.fdic.gov/banks/history
+- https://api.fdic.gov/banks/institutions?filters=ACTIVE:1&fields=NAME,WEBADDR,CERT,ASSET,STALP
+- https://www.ncua.gov/files/publications/analysis/call-report-data-2025-06.zip
+- https://www.ncua.gov/files/publications/analysis/federally-insured-credit-union-list-june-2025.zip
 summary: null
 marketplace_apps: []
 edges:
@@ -40,4 +44,37 @@ edges:
     detected: '2026-10-14'
   detected_by: sweep-fdx.py
   first_seen: '2026-10-14'
+- partner_name: NCUA federally insured credit unions
+  partner: null
+  partner_match: register
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://www.ncua.gov/files/publications/analysis/federally-insured-credit-union-list-june-2025.zip
+  category: US NCUA federally insured credit union charter
+  contract_reference:
+    register: NCUA federally insured credit unions
+    spec_file: null
+    standard: null
+    role: insured-credit-union
+    registrations:
+    - registered_name: MOUNTAIN AMERICA
+      register_status: active
+      register_country: US
+      register_id: '24692'
+      matched_domain: macu.com
+      matched_by: domain
+      licences:
+      - NCUA federally insured credit union (charter 24692)
+      evidence_url: https://mapping.ncua.gov/ResearchCreditUnion.aspx
+      state: UT
+      trade_names:
+      - Mountain America Credit Union
+    signal_note: 'participation only: a federal deposit-insurance charter on a regulator register; no API conformance
+      is published by this register'
+    detected_by: sweep-us-bank-credit-union-registers.py
+    detected: '2026-10-22'
+  detected_by: sweep-us-bank-credit-union-registers.py
+  first_seen: '2026-10-22'
 templates: []
